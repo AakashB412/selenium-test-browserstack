@@ -59,5 +59,24 @@ def test_open_elpais():
 
         assert "/opinion" in driver.current_url
 
+        # Find all article cards
+        articles = driver.find_elements(By.TAG_NAME, "article")
+
+        print(f"Found {len(articles)} articles\n")
+
+        # Print the first 5 articles
+        for index, article in enumerate(articles[:5], start=1):
+
+            title_element = article.find_element(By.TAG_NAME, "h2")
+            link_element = title_element.find_element(By.TAG_NAME, "a")
+
+            title = link_element.text
+            url = link_element.get_attribute("href")
+
+            print(f"Article {index}")
+            print(f"Title: {title}")
+            print(f"URL: {url}")
+            print("-" * 50)
+
     finally:
         driver.quit()
