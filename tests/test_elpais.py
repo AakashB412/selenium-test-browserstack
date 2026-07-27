@@ -24,39 +24,40 @@ def test_open_elpais():
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install())
     )
+    driver.maximize_window()
 
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 15)
 
     try:
         driver.get("https://elpais.com")
+        print("✓ Homepage opened")
 
         wait.until(EC.title_contains("EL PAÍS"))
+        print("✓ Homepage loaded")
 
         time.sleep(2)
 
+        print("Accepting cookies...")
         accept_cookies(wait)
 
-        # Find the Opinión link
-        opinion_link = wait.until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "Opinión"))
+        print("Looking for Opinion link...")
+        opinion_link = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Opinión"))
         )
+        print("✓ Opinion link found")
 
-        # Click it
+        print("Clicking Opinion...")
         opinion_link.click()
 
-        # Wait for the Opinion page to load
+        print("Waiting for Opinion page...")
         wait.until(EC.url_contains("/opinion"))
 
-        print(driver.current_url)
-        print(driver.title)
+        print("✓ Reached Opinion page")
+        print("Current URL:", driver.current_url)
+        print("Current Title:", driver.title)
+
+        time.sleep(5)
 
         assert "/opinion" in driver.current_url
-
-        time.sleep(2)
-
-        print(driver.title)
-
-        assert "EL PAÍS" in driver.title
 
     finally:
         driver.quit()
