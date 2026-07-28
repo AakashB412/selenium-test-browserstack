@@ -24,3 +24,6 @@ urllib3==2.6.3
 webdriver-manager==4.1.2
 websocket-client==1.9.0
 wsproto==1.2.0
+browserstack-local >= 1.2.3
+selenium
+browserstack-sdk @ https://sdk-assets.browserstack.com/python/browserstack_sdk-latest.tar.gz
