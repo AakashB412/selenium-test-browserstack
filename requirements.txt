@@ -25,5 +25,5 @@ webdriver-manager==4.1.2
 websocket-client==1.9.0
 wsproto==1.2.0
 browserstack-local >= 1.2.3
-selenium
+deep-translator==1.11.4
 browserstack-sdk @ https://sdk-assets.browserstack.com/python/browserstack_sdk-latest.tar.gz
