@@ -1,6 +1,19 @@
-.venv/
+# Python
 __pycache__/
-.pytest_cache/
 *.pyc
+
+# macOS
 .DS_Store
-images/
+
+# Logs
+*.log
+log/
+tests/log/
+
+# Downloaded images
+tests/article_images/
+
+# Virtual environments
+venv/
+.venv/
+env/
