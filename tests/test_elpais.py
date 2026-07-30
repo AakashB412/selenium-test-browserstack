@@ -127,7 +127,7 @@ def handle_authentication_slider(driver):
             print("Authentication slider detected.")
             print("Please complete it manually...")
 
-            WebDriverWait(driver, 300).until_not(
+            WebDriverWait(driver, 20).until_not(
                 EC.visibility_of_element_located(
                     (By.CSS_SELECTOR, "div.sliderText")
                 )
@@ -156,9 +156,16 @@ def check_language(driver):
 
 def get_opinion_articles(driver):
 
+    print("DEBUG: Entered get_opinion_articles")
+
     driver.get(
         OPINION_URL
     )
+
+    print("Current page:", driver.title)
+    print("Current URL:", driver.current_url)
+
+    print("DEBUG: Opinion page loaded")
 
     wait_for_page(driver)
 
@@ -219,12 +226,13 @@ def scrape_article(driver, article):
         article["url"]
     )
 
+    print("Current page:", driver.title)
+    print("Current URL:", driver.current_url)
+
     if "/opinion/" not in driver.current_url:
         return None
 
     wait_for_page(driver)
-
-    accept_cookies(driver)
 
     handle_authentication_slider(driver)
 
@@ -377,25 +385,17 @@ def main():
 
     try:
 
-        driver.get(
-            BASE_URL
-        )
-
-        wait_for_page(driver)
-
-        accept_cookies(driver)
-
-        handle_authentication_slider(driver)
+        articles = get_opinion_articles(driver)
 
         check_language(driver)
+        print("DEBUG: Language checked")
 
-        print(
-            "\nGetting Opinion articles..."
-        )
+        print("DEBUG: About to call get_opinion_articles")
 
-        articles = get_opinion_articles(
-            driver
-        )
+        articles = get_opinion_articles(driver)
+
+        print("DEBUG: Returned from get_opinion_articles")
+        print(f"DEBUG: Found {len(articles)} articles")
 
         scraped_articles = []
 
@@ -478,6 +478,9 @@ def main():
             print(
                 f"{word}: {count}"
             )
+    except Exception as e:
+        print(f"EXCEPTION: {e}")
+        raise
 
     finally:
 
