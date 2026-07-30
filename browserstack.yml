@@ -27,18 +27,26 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Platforms object contains all the browser / device combinations you want to test on.
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
-  - deviceName: iPhone 15 Pro
+  - deviceName: Samsung Galaxy Note 9
+    osVersion: 8.1
+    browserName: samsung
+    deviceOrientation: portrait
+  - os: Windows
+    osVersion: 10
+    browserName: Chrome
+    browserVersion: 149.0
+  - deviceName: iPhone 15
     osVersion: 27 Beta
     browserName: safari
     deviceOrientation: portrait
   - os: OS X
-    osVersion: Tahoe
-    browserName: Safari
-    browserVersion: 26.4
-  - os: Windows
-    osVersion: 11
+    osVersion: Sequoia
     browserName: Firefox
-    browserVersion: latest
+    browserVersion: 152.0
+  - os: Windows
+    osVersion: 8.1
+    browserName: Edge
+    browserVersion: 108.0
 
 # ==========================================
 # BrowserStack Local

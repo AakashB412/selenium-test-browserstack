@@ -31,6 +31,34 @@ A Python automation project that uses Selenium WebDriver to scrape the latest op
 
 ---
 
+## How to run
+
+Execute the Python script in the tests folder:
+
+python test_elpais.py -s
+
+The script will:
+
+1. Launch Chrome.
+2. Open EL PAÍS.
+3. Navigate to the Opinion section.
+4. Scrape the first five opinion articles.
+5. Download each article's cover image.
+6. Translate article titles into English.
+7. Display repeated words found in the translated titles.
+
+Downloaded images will be saved inside the article_images folder.
+
+---
+
+## How to run on BrowserStack Automate
+
+Execute the Python script in the tests folder:
+
+browserstack-sdk python test_elpais.py -s
+
+---
+
 ## Sample Output
 
 ```text

@@ -467,9 +467,11 @@ def main():
             translated_headers
         )
 
+
         print(
             "\nRepeated words:"
         )
+
 
         for word,count in repeated.items():
 
